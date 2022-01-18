@@ -1,30 +1,35 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="title">
+    <img alt="IW Logo" src="./assets/banner.png" width="500" height="200">
+    <h1 style="margin-top: -60px">
+    SKILLS MATRIX
+    </h1>
   </div>
   <router-view/>
 </template>
 
-<style lang="scss">
+<style>
+body{
+  background: white;
+  color: black;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+a {
+  color: inherit;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.title {
+  white-space: nowrap;
+  align-content: center;
+  font-size: 12pt;
+  margin-top: -30px;
+  margin-bottom: 50px;
+  color: #404041;
 }
 </style>
