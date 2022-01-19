@@ -19,8 +19,8 @@ export default {
         LogInForm,
     },
       provide:{
-      username: "adam",
-      userpassword: "adam",
+      username: "admin",
+      userpassword: "admin",
   },
     
 }

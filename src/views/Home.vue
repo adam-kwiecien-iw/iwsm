@@ -44,7 +44,7 @@ import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
 
  
-import axios from 'axios';
+//import axios from 'axios';
 
 
 export default defineComponent({
@@ -62,16 +62,23 @@ components: {
 
  methods: {
     post() {
-      axios
-      .post("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills/", {
-        skillName: "add",
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+
+        // Simple POST request with a JSON body using axios
+        // const skill = { skillName: "addVue" };
+        // axios.post("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills/", skill)
+        //   .then(response => console.log(response.data.id));
+
+        const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ skillName: this.skillAdd })
+              };
+              fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills", requestOptions)
+                .then(response => response.json())
+                .then(data => ( console.log(data.id)));
+
+
     },
   },
 
