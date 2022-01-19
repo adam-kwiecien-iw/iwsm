@@ -1,13 +1,18 @@
 <template>
 
-    <button v-if="edit" v-on:click="del">Delete</button>
-    <input v-if="edit" type="text" class="txt" :placeholder = "name" v-model="sName">
-    <button v-if="edit" v-on:click="edit = !edit">Close</button>
-    <button v-if="edit" v-on:click="update">Save</button>
+   <div v-if="edit" class="padding">
+     <div style="margin-bottom: 10px">
+        <button v-if="edit" v-on:click="del">Delete</button>
+      </div>
+      <input v-if="edit" type="text" class="txt" :placeholder = "name" v-model="sName">
+      <div style="margin-top: 10px">
+        <button v-if="edit" v-on:click="edit = !edit">Close</button>
+        <button v-if="edit" v-on:click="update">Save</button>
+      </div>
+    </div>
     <h6 v-else v-on:click="edit = !edit">
         {{skillName}}
     </h6>
-
 </template>
 
 <script>
@@ -43,7 +48,7 @@ data() {
               this.edit = !this.edit
               setTimeout(() => {  
                 window.location.reload(); 
-              }, 2000);
+              }, 4000);
       },
 
     del() {
@@ -71,26 +76,7 @@ data() {
 }
 </script>
 <style scoped>
-
-  .green { 
-      background-color: lightgreen; 
-      width: 35px;
-      height: 30px;
-      font-size: 15pt;
+  .padding { 
+      padding: 10px;
     } 
-
-  .yellow { 
-      background-color: #ffe600; 
-      width: 35px;
-      height: 30px;
-      font-size: 15pt;
-      } 
-
-  .red { 
-      background-color: lightcoral; 
-      width: 35px;
-      height: 30px;
-      font-size: 15pt;
-      } 
-
 </style>
