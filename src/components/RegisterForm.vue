@@ -24,6 +24,7 @@
 <script>
 import {useRouter} from 'vue-router'
 import {ref, provide} from 'vue'
+//import addEmployee from '../api/http'
 export default {
   
   setup(){

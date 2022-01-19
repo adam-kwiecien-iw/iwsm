@@ -12,13 +12,15 @@
       <tr>                   
         <td v-for="skill in skills" :key="skill.id">
           <h6 v-if="skill.id==1">Employees</h6> 
-          <h6 v-else>{{skill.skillName}}</h6>
+          <skill-button v-else :skillId="skill.skillId" :skillName="skill.skillName">{{skill.skillName}}</skill-button>
         </td>
       </tr>
     </thead>
     <tbody>
       <tr v-for="employee in employees" :key="employee.id">
-        <td>{{employee.firstName + " " + employee.lastName}}</td>
+        <employee-button :employeeId="employee.id" :fName="employee.firstName" :lName="employee.lastName" :job="employee.jobTitle" :email="employee.email">
+          {{employee.firstName + " " + employee.lastName}}
+          </employee-button>
 
         <td v-for="index in skills.length - 1" :key="index">
         
@@ -46,8 +48,11 @@ import "datatables.net-dt/css/jquery.dataTables.min.css"
 import $ from 'jquery'; 
 import axios from 'axios';
 import DropDown from './DropDown.vue';
+import SkillButton from './SkillButton.vue';
+import EmployeeButton from './EmployeeButton.vue';
+
 export default {
-  components: { DropDown },
+  components: { DropDown, SkillButton, EmployeeButton },
   
   mounted(){
     axios

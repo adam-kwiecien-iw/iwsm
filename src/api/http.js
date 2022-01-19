@@ -90,4 +90,47 @@
 // }
 
 
-// export default  getEmployees; getSkills;
+function addEmployee(fName, lName, jobName, enteredEmail){
+
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          firstName: fName,
+          lastName: lName,
+          jobTitle: jobName,
+          email: enteredEmail
+          })
+        };
+        fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees", requestOptions)
+        .then(response => response.json())
+        .then(data => ( console.log(data.id)));
+}
+
+function addSkill(sName){
+
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ skillName: sName })
+      };
+      fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills", requestOptions)
+        .then(response => response.json())
+        .then(data => ( console.log(data.id)));
+        window.location.reload();
+}
+
+function getSkills(){
+
+    const requestOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        body: ""
+      };
+      fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills", requestOptions)
+        .then(response => console.log(response))
+            }
+
+
+
+export default  addEmployee; addSkill; getSkills;
