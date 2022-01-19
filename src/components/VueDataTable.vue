@@ -12,7 +12,7 @@
       <tr>                   
         <td v-for="skill in skills" :key="skill.id">
           <h6 v-if="skill.id==1">Employees</h6> 
-          <skill-button v-else :skillId="skill.skillId" :skillName="skill.skillName">{{skill.skillName}}</skill-button>
+          <skill-button v-else :skillId="skill.id" :skillName="skill.skillName">{{skill.skillName}}</skill-button>
         </td>
       </tr>
     </thead>

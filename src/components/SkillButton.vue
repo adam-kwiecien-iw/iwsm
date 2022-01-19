@@ -32,7 +32,7 @@ data() {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ 
                   id: this.skillId,
-                  skillName: this.skillName
+                  skillName: this.sName
                })
             };
             var url = "https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills/" + this.skillId
@@ -41,7 +41,9 @@ data() {
               .then(data => ( console.log(data.id)));
 
               this.edit = !this.edit
-              //window.location.reload();
+              setTimeout(() => {  
+                window.location.reload(); 
+              }, 2000);
       },
 
     del() {
@@ -60,7 +62,10 @@ data() {
               .then(data => ( console.log(data.id)));
 
               this.edit = !this.edit
-              //window.location.reload();
+
+              setTimeout(() => {  
+                window.location.reload(); 
+                }, 2000);
       }
     }
 }

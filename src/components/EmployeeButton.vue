@@ -49,7 +49,9 @@ data() {
               .then(data => ( console.log(data.id)));
 
               this.edit = !this.edit
-              //window.location.reload();
+              setTimeout(() => {  
+                window.location.reload(); 
+                }, 2000);
       },
 
     del() {
@@ -71,7 +73,9 @@ data() {
               .then(data => ( console.log(data.id)));
 
               this.edit = !this.edit
-              //window.location.reload();
+              setTimeout(() => {  
+                window.location.reload(); 
+                }, 2000);
       }
     }
 }
