@@ -5,7 +5,6 @@
 
         <h2>{{username}}</h2>
         <LogInForm></LogInForm>
-        <p><router-link class="r-link" to="/register">Register</router-link></p> 
 
       </form>
   </div>
