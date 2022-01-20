@@ -17,34 +17,22 @@
       </tr>
     </thead>
     <tbody>
-
-    <tr v-for="item in calcEmps" :key="item.id">
        
-      <td>
+      <tr v-for="emp in calcEmps" :key="emp.id">
 
-        <employee-button :employeeId="item.id" :fName="item.firstName" :lName="item.lastName" :job="item.jobTitle" :email="item.email">
-          {{item.employee.firstName + " " + item.employee.lastName}}
+          <employee-button :employeeId="emp.id" :fName="emp.firstName" :lName="emp.lastName" :job="emp.jobTitle" :email="emp.email">
+          {{emp.firstName + " " + emp.lastName}}
         </employee-button>
+            
+        <td v-for="item in getAll" :key="item.employee.id">
 
-      </td>
-
-      <!-- <div> -->
-
-        <td v-for="index in skills.length - 1" :key="index">
-        
-          <drop-down :propSkill="item.skill.id-1" :propEmp="item.employee.id" :propLev="item.level"></drop-down>
-        
+          <div v-if="item.employee.id == emp.id">
+            
+            <drop-down :propSkill="item.skill.id-1" :propEmp="item.employee.id" :propLev="item.level"></drop-down>
+            
+          </div>
         </td>
-
-      <!-- </div> -->
-
-      <div v-if="skills.length - 1 < 4">
-        <td v-for="index in 50" :key="index">
-        </td>
-      </div>
-
-    </tr>
-       
+      </tr>  
     </tbody>
   </table>
    
