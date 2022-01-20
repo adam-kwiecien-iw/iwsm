@@ -1,7 +1,7 @@
 <template>
 	<header>
-        <h1><router-link to="/"><img alt="Vue logo" src="../../assets/logo.png" width="80"></router-link></h1>
-		<div class="menuWrap">
+		<p align="right"><router-link class="r-link" to="/login">Log Out</router-link></p> 
+        <div class="menuWrap">
 			<ul class="menu">
                 <li><router-link to="/">All</router-link></li>
                 <li><router-link to="/employees">Employees</router-link></li>
