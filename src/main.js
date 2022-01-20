@@ -4,6 +4,7 @@ import router from './router'
 import DropDown from "./components/DropDown"
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const app = createApp(App);
 
@@ -13,3 +14,4 @@ app.use(VueAxios, axios)
 app.mount('#app')
 //config.compilerOptions.isCustomElement = tag => tag === 'drop-down'
 //createApp(App).use(router).mount('#app')
+import 'bootstrap/dist/js/bootstrap.js'
