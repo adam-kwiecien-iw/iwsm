@@ -1,14 +1,16 @@
 <template>
-
-
   <div class="search">
-      <div class="refresh">
-        <input v-model="searchTerm" :placeholder="placeholder"/> <button @click="search">Search</button>
-      </div>
-    <button @click="reset">Refresh List</button> 
+    <div class="input-group mb-3">
+      <input  v-model="searchTerm" type="text" class="form-control" :placeholder="placeholder" aria-label="Search" aria-describedby="button-addon2">
+      <button  @click="search" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+    </div>
   </div>
-   <table class="table table-hover table-bordered" id="example">
-    <thead>
+  <div class="refresh">
+    <button @click="reset" class="btn btn-primary"><span class="glyphicon glyphicon-refresh">Refresh</span></button>
+  </div>
+
+   <table class="table table-striped table-hover" id="example">
+    <thead class="table-light">
       <tr>                   
         <td v-for="skill in skills" :key="skill.id">
           <h6 v-if="skill.id==1">Employees</h6> 
