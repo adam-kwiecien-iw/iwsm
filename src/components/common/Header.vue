@@ -1,10 +1,11 @@
 <template>
 	<header>
+        <h1><router-link to="/"><img alt="Vue logo" src="../../assets/logo.png" width="80"></router-link></h1>
 		<div class="menuWrap">
 			<ul class="menu">
-                <li><a href="javascript:;">All</a></li>
-				<li><a href="javascript:;">Employees</a></li>
-				<li><a href="javascript:;">Skills</a></li>
+                <li><router-link to="/">All</router-link></li>
+                <li><router-link to="/employees">Employees</router-link></li>
+                <li><router-link to="/skills">Skills</router-link></li>
 			</ul>
 		</div>
 	</header>
