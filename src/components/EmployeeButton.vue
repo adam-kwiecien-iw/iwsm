@@ -57,7 +57,7 @@ data() {
               this.edit = !this.edit
               setTimeout(() => {  
                 window.location.reload(); 
-                }, 2000);
+                }, 4000);
       },
 
     del() {
@@ -81,7 +81,7 @@ data() {
               this.edit = !this.edit
               setTimeout(() => {  
                 window.location.reload(); 
-                }, 2000);
+                }, 4000);
       }
     }
 }

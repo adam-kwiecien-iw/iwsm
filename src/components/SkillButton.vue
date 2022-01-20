@@ -61,7 +61,7 @@ data() {
                   skillName: this.skillName
                })
             };
-            var url = "https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills/" + this.skillId
+            var url = "https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/skills/" + this.skillId
             fetch(url, requestOptions)
               .then(response => response.json())
               .then(data => ( console.log(data.id)));
@@ -70,7 +70,7 @@ data() {
 
               setTimeout(() => {  
                 window.location.reload(); 
-                }, 2000);
+                }, 4000);
       }
     }
 }

@@ -17,21 +17,33 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="employee in employees" :key="employee.id">
-        <employee-button :employeeId="employee.id" :fName="employee.firstName" :lName="employee.lastName" :job="employee.jobTitle" :email="employee.email">
-          {{employee.firstName + " " + employee.lastName}}
-          </employee-button>
+
+    <tr v-for="item in calcEmps" :key="item.id">
+       
+      <td>
+
+        <employee-button :employeeId="item.id" :fName="item.firstName" :lName="item.lastName" :job="item.jobTitle" :email="item.email">
+          {{item.employee.firstName + " " + item.employee.lastName}}
+        </employee-button>
+
+      </td>
+
+      <!-- <div> -->
 
         <td v-for="index in skills.length - 1" :key="index">
         
-        <drop-down></drop-down>
+          <drop-down :propSkill="item.skill.id-1" :propEmp="item.employee.id" :propLev="item.level"></drop-down>
         
         </td>
-          <div v-if="skills.length - 1 < 4">
-            <td v-for="index in 50" :key="index">
-            </td>
-          </div>
-      </tr>
+
+      <!-- </div> -->
+
+      <div v-if="skills.length - 1 < 4">
+        <td v-for="index in 50" :key="index">
+        </td>
+      </div>
+
+    </tr>
        
     </tbody>
   </table>
@@ -68,6 +80,22 @@ export default {
     {
       this.skills = res.data;
       $('#example').DataTable();
+    })
+    axios
+    .get("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/skills/")
+    .then((res)=>
+    {
+      this.getAll = res.data;
+      $('#example').DataTable();
+      for (let i = 0; i < this.getAll.length -1; i++) {
+
+          var doesExist = this.calcEmps.some(e => e.id === this.getAll[i].employee.id)
+
+          if(!doesExist){
+            this.calcEmps.push(this.getAll[i].employee)
+          }
+      }
+      console.log(this.calcEmps)
     })
   },
   methods: {
@@ -106,9 +134,12 @@ export default {
   data: function() {
         return {
             employees:[],
+            calcEmps: [],
             skills:[],
             searched:[],
             searchedSkills: [],
+            getAll: [],
+            current:{},
             searchTerm: "",
             placeholder: "Case-sensitive search"
         }

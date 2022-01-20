@@ -60,9 +60,12 @@ components: {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ skillName: this.skillAdd })
             };
-            fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills", requestOptions)
+            fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/skills", requestOptions)
               .then(response => response.json())
               .then(data => ( console.log(data.id)));
+              setTimeout(() => {  
+                window.location.reload(); 
+              }, 3000);
     },
   },
 

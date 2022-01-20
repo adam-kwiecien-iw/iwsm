@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selected" v-bind:class="{'red': selected == 0 || selected == 1 || selected == 2 ,  'yellow': selected == 3, 'green': selected == 4 || selected == 5}">  
+  <select v-model="selected" @change="update" v-bind:class="{'red': selected == 0 || selected == 1 || selected == 2 ,  'yellow': selected == 3, 'green': selected == 4 || selected == 5}">  
     <option>0</option> 
     <option>1</option> 
     <option>2</option>  
@@ -10,44 +10,42 @@
 </template>
 
 <script>
-import { inject } from 'vue'
-import {useRouter} from 'vue-router'
 export default {
-  
-  setup(){
-    const email = inject('userpassword')
-    const password = inject('userpassword')
-    const router = useRouter();
 
-    
-    return{
-      email,
-      password,
-      router
-    }
-  },
+  props: ['propSkill', 'propEmp', 'propLev'],
   
  data() {
     return {
-      enteredEmail: "",
-      enteredPassword: "",
-      selected: ""
+      skill: this.propSkill,
+      emp: this.propEmp,
+      level: this.propLev,
+      selected: this.propLev,
     }
   },
 
   methods: {
-    Confirmed() {
+
+      update() {
         
-        console.log('pressed')
-        if (this.enteredEmail == this.email && this.password == this.enteredPassword){
-          console.log('this is true')
-          this.router.replace('/');
-        }
-        else{
-         this.enteredPassword = ""
-         alert("Incorrect email address and/or password")
-        }
-      }
+      const requestOptions = {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ 
+                  employee: {},
+                  skill: {},
+                  level: this.selected
+               })
+            };
+            var url = "https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/" + this.emp + "/skills/" + this.skill
+            fetch(url, requestOptions)
+              .then(response => response.json())
+              .then(data => ( console.log(data.id)));
+
+              console.log("here")
+              // setTimeout(() => {  
+              //   window.location.reload(); 
+              // }, 4000);
+      },
     }
 }
 </script>
