@@ -82,8 +82,7 @@ export default {
 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
- * {
+* {
      margin: 0;
      padding: 0;
      box-sizing: border-box;
@@ -95,7 +94,7 @@ export default {
  }
 
  .wrapper {
-     max-width: 350px;
+     max-width: 400px;
      min-height: 500px;
      margin: auto;
      padding: 40px 30px 30px 30px;
@@ -131,7 +130,7 @@ export default {
      border: none;
      outline: none;
      background: none;
-     font-size: 1.2rem;
+     font-size: 1rem;
      color: #666;
      padding: 10px 15px 10px 10px
  }
@@ -149,7 +148,7 @@ export default {
 
  .wrapper .btn {
      box-shadow: none;
-     width: 100%;
+     width: 97%;
      height: 40px;
      background-color: #01131b;
      color: #fff;
