@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-      <img src="../../src/assets/logo.png" alt="" width="50" height="50"> 
+      <img src="../../src/assets/smallLogo.png" alt="" width="50" height="50"> 
       <div class="text-center mt-4 name"> IntegrationWorks </div>
       <form class="p-3 mt-3" @submit.prevent="login">
         <div class="form-field d-flex align-items-center">
