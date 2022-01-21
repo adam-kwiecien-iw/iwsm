@@ -1,11 +1,10 @@
 <template>
-<h1>Employee List</h1>
   <div class="home">
     <div class="l-out">
-      dfasdfasd
+      Refresh
     </div>
     <div style="text-align: centre">
-    eee
+        <h1>Employee List</h1>
     </div>
     <vue-data-table></vue-data-table>
   </div>

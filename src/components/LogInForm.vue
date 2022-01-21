@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-      <div class="logo"> <img src="" alt=""> </div> 
+      <img src="../../src/assets/logo.png" alt="" width="50" height="50"> 
       <div class="text-center mt-4 name"> IntegrationWorks </div>
       <form class="p-3 mt-3" @submit.prevent="login">
         <div class="form-field d-flex align-items-center">
@@ -11,7 +11,7 @@
           <span class="fas fa-key"></span>
           <input type="password" name="password" id="pwd" placeholder="Password" v-model="enteredPassword">
         </div>
-        <button class="btn mt-3" v-on:click="Confirmed">Login</button>
+        <button class="btn mt-5" v-on:click="Confirmed">Login</button>
       </form>
       <div class="text-center fs-6"> <a href="#">Forget password?</a> or <router-link to="/register">Register</router-link></div>
     </div>
@@ -81,7 +81,6 @@ export default {
 
 
 
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
  * {
@@ -92,13 +91,13 @@ export default {
  }
 
  body {
-     background: #ecf0f3
+     background: #F8F5Ec
  }
 
  .wrapper {
      max-width: 350px;
      min-height: 500px;
-     margin: 80px auto;
+     margin: auto;
      padding: 40px 30px 30px 30px;
      background-color: #ecf0f3;
      border-radius: 15px;
@@ -152,7 +151,7 @@ export default {
      box-shadow: none;
      width: 100%;
      height: 40px;
-     background-color: #03A9F4;
+     background-color: #01131b;
      color: #fff;
      border-radius: 25px;
      box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
@@ -160,17 +159,17 @@ export default {
  }
 
  .wrapper .btn:hover {
-     background-color: #039BE5
+     background-color: #B92222
  }
 
  .wrapper a {
      text-decoration: none;
      font-size: 0.8rem;
-     color: #03A9F4
+     color: #B92222
  }
 
  .wrapper a:hover {
-     color: #039BE5
+     color: #01131b
  }
 
  @media(max-width: 380px) {

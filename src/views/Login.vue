@@ -1,8 +1,6 @@
 <template>
   <div class="login">
-      <h2>Log In</h2>
       <form @submit.prevent="Login">
-
         <h2>{{username}}</h2>
         <LogInForm></LogInForm>
 
