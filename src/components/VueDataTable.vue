@@ -5,6 +5,7 @@
       <button  @click="search" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
     </div>
   </div>
+
   <div class="refresh">
     <button @click="reset" class="btn btn-primary"><span class="glyphicon glyphicon-refresh">Refresh</span></button>
   </div>

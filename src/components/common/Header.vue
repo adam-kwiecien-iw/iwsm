@@ -1,11 +1,11 @@
 <template>
 	<header>
-		<p align="right"><router-link class="r-link" to="/login">Log Out</router-link></p> 
         <div class="menuWrap">
 			<ul class="menu">
                 <li><router-link to="/">All</router-link></li>
                 <li><router-link to="/employees">Employees</router-link></li>
                 <li><router-link to="/skills">Skills</router-link></li>
+                <li><router-link to="/login">Log out</router-link></li>
 			</ul>
 		</div>
 	</header>
