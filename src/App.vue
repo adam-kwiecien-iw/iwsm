@@ -1,6 +1,6 @@
 <template>
   <div class="title">
-    <img alt="IW Logo" src="./assets/banner.png" width="500" height="200">
+    <router-link to="/"><img alt="IW Logo" src="./assets/banner.png" width="500" height="200"></router-link>
     <h1 style="margin-top: -60px">
     SKILLS MATRIX
     </h1>
