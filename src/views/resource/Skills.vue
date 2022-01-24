@@ -1,5 +1,5 @@
 <template>
-<h1>Employee List</h1>
+<h1>Skill List</h1>
   <div class="home">
     <div class="l-out">
       <h3><router-link class="r-link" to="/login">Log Out</router-link></h3> 
