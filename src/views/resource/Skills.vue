@@ -1,19 +1,15 @@
 <template>
-
+<h1>Skill List</h1>
   <div class="home">
-    <!-- <div class="l-out">
-      <h3><router-link class="r-link" to="/login">Log Out</router-link></h3> 
-    </div> -->
 
-
-    <!-- <div style="text-align: centre">
+    <div style="text-align: centre">
       <p>Add Skill:</p><input v-model="skillAdd" /> <button @click="post">Add</button>
-    </div> -->
-    <br> 
+    </div>
+    <br>
     <vue-data-table></vue-data-table>
 
-  </div>
 
+  </div>
 </template>
 
 
@@ -21,7 +17,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 // import TableLite from 'vue3-table-lite'
-import VueDataTable from '../components/VueDataTable'
+import VueDataTable from '../../components/VueDataTable'
 
  //import getEmployeeList from '../api/employee.js'
 // import the JS file

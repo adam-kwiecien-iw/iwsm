@@ -1,13 +1,24 @@
 <template>
   <div class="title">
-    <img alt="IW Logo" src="./assets/banner.png" width="500" height="200">
+    
     <h1 style="margin-top: -60px">
     SKILLS MATRIX
     </h1>
+    <Header />
   </div>
   <router-view/>
 </template>
 
+<script>
+import Header from './components/common/Header'; //import 헤더 추가
+
+export default {
+  name: 'App',
+  components: {
+    Header
+  }
+}
+</script>
 <style>
 body{
   background: white;
