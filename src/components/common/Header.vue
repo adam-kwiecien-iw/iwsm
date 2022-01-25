@@ -79,6 +79,10 @@ a{text-decoration:none; color:#333;}
         color: white;
         font-weight: 900;
 }
+li a{
+        color: white;
+}
+
  /* .background {
   width: 100%;
   height: 100%;
