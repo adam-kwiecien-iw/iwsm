@@ -140,7 +140,8 @@ export default {
      padding-left: 10px;
      margin-bottom: 20px;
      border-radius: 20px;
-     box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff
+     border: 1px solid #adadad;
+     /* box-shadow: inset 8px 8px 8px #ffffff, inset -8px -8px 8px #fff */
  }
 
  .wrapper .form-field .fas {

@@ -149,14 +149,15 @@ export default {
      background: none;
      font-size: 1rem;
      color: #666;
-     padding: 10px 15px 10px 10px
+     padding: 10px 15px 10px 10px 
  }
 
  .wrapper .form-field {
      padding-left: 10px;
      margin-bottom: 20px;
      border-radius: 20px;
-     box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff
+     border: 1px solid #adadad;
+     /* box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff */
  }
 
  .wrapper .form-field .fas {
