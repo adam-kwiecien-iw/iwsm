@@ -1,4 +1,5 @@
 <template>
+<div class="tb">
   <div class="search">
     <div class="input-group mb-3">
       <input  v-model="searchTerm" type="text" class="form-control" :placeholder="placeholder" aria-label="Search" aria-describedby="button-addon2">
@@ -6,8 +7,12 @@
     </div>
   </div>
 
-  <div class="refresh">
-    <button @click="reset" class="btn btn-primary"><span class="glyphicon glyphicon-refresh">Refresh</span></button>
+  <div class="refresh" align="right">
+    <!-- <button @click="reset" class="btn btn-primary"><span class="glyphicon glyphicon-refresh">Refresh</span></button> -->
+    <svg @click="reset" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+      <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+    </svg>
   </div>
 
    <table class="table table-striped table-hover" id="example">
@@ -50,6 +55,7 @@
        
     </tbody>
   </table>
+</div>
    
 </template>
  
@@ -154,13 +160,19 @@ export default {
 
 .search{
   text-align: left;
-  padding-bottom: 50px;
-  margin-top: -85px;
-  padding-top: -130px;
-  padding-left: 10px;
+  width: 80%;
+  margin: auto;
 }
 .refresh{
-  padding-bottom: 20px;
+  padding:10px 60px;
 }
-
+.refresh :hover{
+  color: #B92222;
+  width:"32"; 
+  height:"32";
+}
+.table{
+  margin: auto;
+  width: 95%;
+}
 </style>

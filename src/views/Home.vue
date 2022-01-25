@@ -1,19 +1,19 @@
 <template>
 
   <div class="home">
-    <div class="l-out">
+    <!-- <div class="l-out">
       <h3><router-link class="r-link" to="/login">Log Out</router-link></h3> 
-    </div>
+    </div> -->
 
 
-    <div style="text-align: centre">
+    <!-- <div style="text-align: centre">
       <p>Add Skill:</p><input v-model="skillAdd" /> <button @click="post">Add</button>
-    </div>
-    <br>
+    </div> -->
+    <br> 
     <vue-data-table></vue-data-table>
 
-
   </div>
+
 </template>
 
 

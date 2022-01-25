@@ -1,13 +1,16 @@
 <template>
   <div class="home">
-    <div class="l-out">
+    <!-- <div class="l-out">
       Refresh
-    </div>
+    </div> -->
     <div style="text-align: centre">
         <h1>Employee List</h1>
     </div>
     <vue-data-table></vue-data-table>
   </div>
+
+
+  
 </template>
 
 
