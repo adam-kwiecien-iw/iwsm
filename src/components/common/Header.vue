@@ -1,7 +1,9 @@
 <template>  
  <div class="background" d-flex justify-content-center align-items-center gradient>
         <header>
-                <router-link to="/"><img alt="IW Logo" src="../../assets/banner2.png" width="300" height="100" align="left"></router-link>
+                <div class="banner">
+                        <router-link to="/"><img alt="IW Logo" src="../../assets/banner_w.png" width="310" height="30" align="left"></router-link>
+                </div>
                 <div class="menuWrap">
                         <ul class="menu">
                                 <li><router-link to="/">All</router-link></li>
@@ -52,7 +54,7 @@ a{text-decoration:none; color:#333;}
   z-index: 1;
   padding-bottom: 10%;
   margin: auto;
-  padding-left: 4%;
+
 }
 
 .background::after {
@@ -64,12 +66,18 @@ a{text-decoration:none; color:#333;}
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.876;
 
+}
+.banner{
+      padding-left: 4%;
+      padding-top: 1.7%;    
 }
 .main-title{
         margin: 0;
         padding-top: 5%;
+        color: white;
+        font-weight: 900;
 }
  /* .background {
   width: 100%;
