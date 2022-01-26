@@ -1,4 +1,12 @@
 <template>
+<loading v-model:active="isLoading"
+                 :can-cancel="false"
+                 :is-full-page="true"
+                 :loader="mode"
+                 :color="color"
+                 :width="size"
+                 :height="size"
+                 ></loading>
 <div class="tb">
   <div class="search">
     <div class="input-group mb-3">
@@ -9,7 +17,7 @@
 
   <div class="refresh" align="right">
     <!-- <button @click="reset" class="btn btn-primary"><span class="glyphicon glyphicon-refresh">Refresh</span></button> -->
-    <svg @click="reset" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+    <svg @click="reset" width="32" height="32" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
       <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
     </svg>
@@ -26,21 +34,22 @@
     </thead>
     <tbody>
        
-      <tr v-for="emp in calcEmps" :key="emp.id">
+       
+      <tr v-for="item in sortedAll"  :key="item.employee.id" >
 
-          <employee-button :employeeId="emp.id" :fName="emp.firstName" :lName="emp.lastName" :job="emp.jobTitle" :email="emp.email">
-          {{emp.firstName + " " + emp.lastName}}
+      <td>
+        <employee-button :employeeId="item.employee.id" :fName="item.employee.firstName" :lName="item.employee.lastName" :job="item.employee.jobTitle" :email="item.employee.email">
+          {{item.employee.firstName + " " + item.employee.lastName}}
         </employee-button>
-            
-        <td v-for="item in getAll" :key="item.employee.id">
-
-          <div v-if="item.employee.id == emp.id">
-            
-            <drop-down :propSkill="item.skill.id-1" :propEmp="item.employee.id" :propLev="item.level"></drop-down>
-            
-          </div>
+      </td>      
+      
+  
+        <td v-for="entry in item.entries"  :key="entry.employee.id" >
+          <drop-down v-if="entry.level != empty" :propSkill="entry.skill.id" :propEmp="entry.employee.id" :propLev="entry.level"></drop-down>
         </td>
+
       </tr>  
+
     </tbody>
   </table>
 </div>
@@ -59,11 +68,13 @@ import axios from 'axios';
 import DropDown from './DropDown.vue';
 import SkillButton from './SkillButton.vue';
 import EmployeeButton from './EmployeeButton.vue';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
-  components: { DropDown, SkillButton, EmployeeButton },
+  components: { DropDown, SkillButton, EmployeeButton, Loading },
   
-  mounted(){
+ mounted(){
     axios
     .get("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/")
     .then((res)=>
@@ -90,13 +101,33 @@ export default {
 
           if(!doesExist){
             this.calcEmps.push(this.getAll[i].employee)
-          }
+          } 
       }
-      console.log(this.calcEmps)
+      this.calcEmps.forEach(employee => {      
+        
+        var empSkills = []
+        for (let i = 0; i < this.getAll.length -1; i++) {
+          
+          if( this.getAll[i].employee.id == employee.id){
+              empSkills.push(this.getAll[i])
+             }
+         }
+         this.sortedAll.push(
+           {
+             employee: employee,
+             entries: empSkills
+           }
+         )
+         console.log(this.sortedAll)
+      });
     })
+
+    setTimeout(() => {
+    this.isLoading = false
+        }, 4000)
   },
   methods: {
-
+   
     search(){
 
         for (let i = 0; i < this.employees.length; i++) {
@@ -132,13 +163,19 @@ export default {
         return {
             employees:[],
             calcEmps: [],
+            sortedAll: [],
             skills:[],
             searched:[],
             searchedSkills: [],
             getAll: [],
             current:{},
+            empty: "",
             searchTerm: "",
-            placeholder: "Case-sensitive search"
+            placeholder: "Case-sensitive search",
+            isLoading: true,
+            color: "#B92425",
+            mode: "bars",
+            size: 75
         }
     },
 }

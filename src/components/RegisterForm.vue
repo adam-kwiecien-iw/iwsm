@@ -80,7 +80,8 @@ export default {
                       email: this.enteredEmail
                       })
                     };
-                    fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees", requestOptions)
+                    var url = "https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills/employees/";
+                    fetch(url, requestOptions)
                     .then(response => response.json())
                     .then(data => ( console.log(data.id)));
                     alert( this.fName +  " added")
