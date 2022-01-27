@@ -42,7 +42,9 @@ yarn lint
 
 ### Project dependancies
 -Bootsrap 5
+
 -vue-loading-overlay
+
 -vue-data-table
 
 
