@@ -1,3 +1,4 @@
+// Header UI. The header is shared in all pages.
 <template>  
  <div class="background" d-flex justify-content-center align-items-center gradient>
         <header>
@@ -15,7 +16,7 @@
         </header>
         <div class="main-title">
                 <h1 class="h1-seo">IW Skills Matrix</h1>
-                <h3>some brief description here blalba</h3>
+                <!-- <h3>some brief description here blalba</h3> -->
         </div>
   </div>
 </template>
@@ -26,7 +27,7 @@ export default {
 
 }
 </script>
-
+// Header's style
 <style scoped>
 header{width:100%; text-align:center; position:relative; height:120px; }
 header h1{position:absolute; top:0; left:100px;}
