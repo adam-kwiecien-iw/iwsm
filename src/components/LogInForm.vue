@@ -1,3 +1,5 @@
+
+// login page UI 
 <template>
     <div class="wrapper">
       <img src="../../src/assets/smallLogo.png" alt="" width="50" height="50"> 
@@ -16,7 +18,7 @@
       <div class="text-center fs-6"> <a href="#">Forget password?</a> or <router-link to="/register">Register</router-link></div>
     </div>
 </template>
-
+// Depending on the user's input in email and password, some appropriate message will pop up or the user will be routed to the Home page
 <script>
 import { inject } from 'vue'
 import {useRouter} from 'vue-router'
@@ -58,6 +60,8 @@ export default {
     }
 }
 </script>
+
+// IW brand font and colors are used
 <style scoped>
 
 .btn-confirm {
