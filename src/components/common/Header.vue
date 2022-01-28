@@ -6,16 +6,16 @@
                 </div>
                 <div class="menuWrap">
                         <ul class="menu">
-                                <li><router-link to="/">All</router-link></li>
+                                <!-- <li><router-link to="/">All</router-link></li>
                                 <li><router-link to="/employees">Employees</router-link></li>
-                                <li><router-link to="/skills">Skills</router-link></li>
+                                <li><router-link to="/skills">Skills</router-link></li> -->
                                 <li><router-link to="/login">Log out</router-link></li>
                         </ul>
                 </div>
         </header>
         <div class="main-title">
                 <h1 class="h1-seo">IW Skills Matrix</h1>
-                <h3>some brief description here blalba</h3>
+                <h3></h3>
         </div>
   </div>
 </template>

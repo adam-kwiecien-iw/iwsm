@@ -1,5 +1,5 @@
 <template>
-
+<!-- this is a component that the admin would be able to use to update or delete an employee -->
   <div v-if="edit" class="padding">
      <div style="margin-bottom: 10px">
         <button v-if="edit" v-on:click="del">Delete</button>
@@ -20,6 +20,7 @@
 <script>
 export default {
 
+//parse in employee details
   props: ['employeeId', 'fName', 'lName', 'job', 'email'],
 
 data() {
@@ -37,7 +38,7 @@ data() {
 
   methods: {
     update() {
-        
+        //method to updayet an employees name
       const requestOptions = {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
@@ -61,7 +62,7 @@ data() {
       },
 
     del() {
-        
+        //method to delete an employee
       const requestOptions = {
               method: "DELETE",
               headers: { "Content-Type": "application/json" },
@@ -78,7 +79,9 @@ data() {
               .then(response => response.json())
               .then(data => ( console.log(data.id)));
 
+              //hide update and delete options
               this.edit = !this.edit
+              //reload the paget to dispaly delete
               setTimeout(() => {  
                 window.location.reload(); 
                 }, 4000);

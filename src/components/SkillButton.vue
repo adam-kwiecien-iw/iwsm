@@ -1,5 +1,5 @@
 <template>
-
+<!-- component for admin to update skill name or delete skill -->
    <div v-if="edit" class="padding">
      <div style="margin-bottom: 10px">
         <button v-if="edit" v-on:click="del">Delete</button>

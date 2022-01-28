@@ -1,4 +1,5 @@
 <template>
+<!-- Loading component -->
 <loading v-model:active="isLoading"
                  :can-cancel="false"
                  :is-full-page="true"
@@ -25,7 +26,8 @@
 
    <table class="table table-striped table-hover" id="example">
     <thead class="table-light">
-      <tr>                   
+      <tr> 
+        <!-- Skills are the along the tip row -->
         <td v-for="skill in skills" :key="skill.id">
           <h6 v-if="skill.id==1">Employees</h6> 
           <skill-button v-else :skillId="skill.id" :skillName="skill.skillName">{{skill.skillName}}</skill-button>
@@ -37,16 +39,18 @@
        
       <tr v-for="item in sortedAll"  :key="item.employee.id" >
 
-      <td>
-        <employee-button :employeeId="item.employee.id" :fName="item.employee.firstName" :lName="item.employee.lastName" :job="item.employee.jobTitle" :email="item.employee.email">
-          {{item.employee.firstName + " " + item.employee.lastName}}
-        </employee-button>
-      </td>      
-      
-  
-        <td v-for="entry in item.entries"  :key="entry.employee.id" >
-          <drop-down v-if="entry.level != empty" :propSkill="entry.skill.id" :propEmp="entry.employee.id" :propLev="entry.level"></drop-down>
-        </td>
+        <td>
+          <!-- column of employees -->
+          <employee-button :employeeId="item.employee.id" :fName="item.employee.firstName" :lName="item.employee.lastName" :job="item.employee.jobTitle" :email="item.employee.email">
+            {{item.employee.firstName + " " + item.employee.lastName}}
+          </employee-button>
+        </td>      
+        
+            <!-- For every skill level related to the employee -->
+          <td v-for="entry in item.entries"  :key="entry.employee.id" >
+            <drop-down v-if="entry.level == 0 || entry.level == 1 || entry.level == 2 || entry.level == 3 || entry.level == 4 || entry.level == 5" :propSkill="entry.skill.id" :propEmp="entry.employee.id" :propLev="entry.level"></drop-down>
+            <drop-down v-else :propSkill="entry.skill.id" :propEmp="entry.employee.id" :propLev="0"></drop-down>
+          </td>
 
       </tr>  
 
@@ -63,8 +67,8 @@ import 'jquery/dist/jquery.min.js';
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
-import $ from 'jquery'; 
-import axios from 'axios';
+// import $ from 'jquery'; 
+// import axios from 'axios';
 import DropDown from './DropDown.vue';
 import SkillButton from './SkillButton.vue';
 import EmployeeButton from './EmployeeButton.vue';
@@ -73,63 +77,73 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
   components: { DropDown, SkillButton, EmployeeButton, Loading },
-  
+
  mounted(){
-    axios
-    .get("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/")
-    .then((res)=>
-    {
-      this.employees = res.data;
-      $('#example').DataTable();
-    })
-    axios
-    .get("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills/")
-    .then((res)=>
-    {
-      this.skills = res.data;
-      $('#example').DataTable();
-    })
-    axios
-    .get("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/skills/")
-    .then((res)=>
-    {
-      this.getAll = res.data;
-      $('#example').DataTable();
-      for (let i = 0; i < this.getAll.length -1; i++) {
+    // call to retrieve employees from the database and store in this.employees
+    const getEmps = {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          };
+          fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees", getEmps)
+            .then(response => response.json())
+            .then(data => (this.employees = data))
+  // call to retrieve skills from the database and store in this.skills
+    const getSkills = {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          };
+          fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/skills", getSkills)
+            .then(response => response.json())
+            .then(data => ( this.skills = data, this.skills.unshift({skillName: "Employees"})))
 
-          var doesExist = this.calcEmps.some(e => e.id === this.getAll[i].employee.id)
 
-          if(!doesExist){
-            this.calcEmps.push(this.getAll[i].employee)
-          } 
-      }
-      this.calcEmps.forEach(employee => {      
-        
-        var empSkills = []
-        for (let i = 0; i < this.getAll.length -1; i++) {
-          
-          if( this.getAll[i].employee.id == employee.id){
-              empSkills.push(this.getAll[i])
-             }
-         }
-         this.sortedAll.push(
-           {
-             employee: employee,
-             entries: empSkills
-           }
-         )
-         console.log(this.sortedAll)
-      });
-    })
+  // call of getAll from the database which is then sorted and stored
+    const getAll = {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        };
+        fetch("https://ssp8p1cf45.execute-api.ap-southeast-2.amazonaws.com/Prod/api/v1/employees/skills", getAll)
+        .then(response => response.json())
+          .then(data => (
+                    console.log("Here"),
+                    
+                    setTimeout(() => {
+                      this.getAll = data
+                      console.log("Loop")
+                             for (let i = 0; i < this.getAll.length -1; i++) {
 
-    setTimeout(() => {
-    this.isLoading = false
-        }, 4000)
+                                  var doesExist = this.calcEmps.some(e => e.id === this.getAll[i].employee.id)
+
+                                  if(!doesExist){
+                                    this.calcEmps.push(this.getAll[i].employee)
+                                  } 
+                              }
+                              this.calcEmps.forEach(employee => {      
+                                
+                                var empSkills = []
+                                for (let i = 0; i < this.getAll.length -1; i++) {
+                                  
+                                  if( this.getAll[i].employee.id == employee.id){
+                                      empSkills.push(this.getAll[i])
+                                      }
+                                  }
+                                  this.sortedAll.push(
+                                    {
+                                      employee: employee,
+                                      entries: empSkills
+                                    }
+                                  )
+                                  console.log(this.getAll)
+                              }),
+
+                      this.isLoading = false
+                      }, 6000)
+                    
+                    ))
   },
   methods: {
-   
+   //Filter employees or skills depending on the searchterm
     search(){
-
         for (let i = 0; i < this.employees.length; i++) {
           var exist = Object.values(this.employees[i]).includes(this.searchTerm);
           if(exist){
@@ -147,7 +161,6 @@ export default {
             this.searchedSkills.push(this.skills[i]);
             
             this.skills = this.searchedSkills
-
           }
         }
         }else {
