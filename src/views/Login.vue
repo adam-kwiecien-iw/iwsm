@@ -1,3 +1,4 @@
+// apply the login form in login page
 <template>
   <div class="login">
       <form @submit.prevent="Login">
@@ -7,7 +8,7 @@
       </form>
   </div>
 </template>
-
+// import the login form from components folder
 <script>  
 import LogInForm from '@/components/LogInForm.vue'
 

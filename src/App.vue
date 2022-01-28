@@ -1,3 +1,5 @@
+// This is typically the root of IW skills matrix website defined in Vue format. 
+// It defines the template for the website.
 <template>
   <div class="title">
     
@@ -8,9 +10,9 @@
   </div>
   <router-view/>
 </template>
-
+// The Header is imported from internal components folder
 <script>
-import Header from './components/common/Header'; //import 헤더 추가
+import Header from './components/common/Header';
 
 export default {
   name: 'App',

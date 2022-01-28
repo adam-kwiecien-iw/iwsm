@@ -1,3 +1,4 @@
+// The register page has the register form and login link to go back to login page
 <template>
   <div class="register">
       <RegisterForm></RegisterForm>
@@ -6,7 +7,7 @@
  
 </template>
 
-
+// import the register form from components folder
 <script>
 import RegisterForm from '@/components/RegisterForm.vue'
 

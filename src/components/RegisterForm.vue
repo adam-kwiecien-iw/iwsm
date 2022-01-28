@@ -1,3 +1,5 @@
+// Register UI. Each input field must be filled to create a user.
+
 <template>
   <div class="wrapper">
     <img src="../../src/assets/smallLogo.png" alt="" width="50" height="50"> 
@@ -41,6 +43,8 @@
   </div>
 </template>
 
+// When a user fills up all the fields and click sign up, the request data in json format will be passed to the lambda function.
+// There will be a message when creation is successful.
 <script>
 import {useRouter} from 'vue-router'
 import {ref, provide} from 'vue'
@@ -95,9 +99,8 @@ export default {
 }
 </script>
 
+// IW brand font and colors are used
 <style scoped>
-
-
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
  * {
@@ -197,11 +200,6 @@ export default {
      }
  }
 
-
-
-
-
-
 .btn-confirm {
   width:150px;
   height:30px;
@@ -219,9 +217,6 @@ export default {
   padding-left: 10px;
   font-size:10pt;
 
-
-
-  
 }
 
 </style>

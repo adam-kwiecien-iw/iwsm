@@ -1,5 +1,5 @@
 
-// login page UI 
+// login UI 
 <template>
     <div class="wrapper">
       <img src="../../src/assets/smallLogo.png" alt="" width="50" height="50"> 

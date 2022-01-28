@@ -1,3 +1,4 @@
+// The home page consists of a skills matrix table where shows employee list and their skills list
 <template>
 
   <div class="home">
@@ -25,10 +26,10 @@ import VueDataTable from '../components/VueDataTable'
 
  //import getEmployeeList from '../api/employee.js'
 // import the JS file
-
-   // list = getEmployeeList();
-  // console.log("COMPLETING");
-  // console.log(list);
+//import axios from 'axios';
+  // list = getEmployeeList();
+// console.log("COMPLETING");
+// console.log(list);
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 //Datatable Modules
@@ -36,8 +37,9 @@ import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
 
  
-//import axios from 'axios';
 
+
+// The table retrieve skills matrix data from getAll lambda function, skillAdd or post function is not in use for now.
 
 export default defineComponent({
 
